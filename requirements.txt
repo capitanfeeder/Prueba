@@ -3,3 +3,4 @@ pandas
 uvicorn
 joblib
 pydantic
+pyarrow
