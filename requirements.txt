@@ -3,3 +3,5 @@ pandas
 uvicorn
 joblib
 pydantic
+pyarrow
+xgboost
