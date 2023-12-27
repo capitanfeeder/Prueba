@@ -166,7 +166,6 @@ def top_3_vehicles(max_price_usd: float):
 
 
 
-# Ruta para obtener estadísticas sobre los viajes en taxi
 @app.get("/stats")
 def get_taxi_stats(pickup_borough: str):
     """
@@ -182,40 +181,66 @@ def get_taxi_stats(pickup_borough: str):
             - EWR
 
     Returns:
-        - JSON con información estadística.
+        - JSON con información estadística predefinida para cada distrito.
     """
     try:
-        # Cargar el DataFrame desde el archivo parquet
-        taxis = pd.read_parquet('Datasets/taxis_2023.parquet')
-
-        # Filtrar datos para el distrito específico
-        filtered_taxis = taxis[taxis['pickup_borough'] == pickup_borough]
-
-        # Calcular estadísticas sobre los datos de viajes en taxi en el distrito
-        total_trips = len(filtered_taxis)
-        
-        # Calcular la duración promedio del viaje en horas
-        duration_timedelta = (filtered_taxis['dropoff_datetime'] - filtered_taxis['pickup_datetime'])
-        average_trip_duration = round(duration_timedelta.mean() / timedelta(hours=1), 2)
-
-        # Calcular la media de viajes por día
-        daily_trips = round(filtered_taxis.groupby(filtered_taxis['pickup_datetime'].dt.date).size().mean(), 2)
-
-        # Calcular la media de viajes por mes
-        monthly_trips = round(filtered_taxis.groupby(filtered_taxis['pickup_datetime'].dt.to_period("M")).size().mean(), 2)
-
-        average_trip_distance = round(filtered_taxis['trip_distance'].mean(), 2)
-        average_total_amount = round(filtered_taxis['total_amount'].mean(), 2)
-
-        # Devolver la información estadística como JSON
-        return {
-            "Viajes Totales": total_trips,
-            "Duración Promedio (Hs)": average_trip_duration,
-            "Media de Viajes por Día": daily_trips,
-            "Media de Viajes por Mes": monthly_trips,
-            "Distancia recorrida promedio (millas)": average_trip_distance,
-            "Total ganado en promedio (USD)": average_total_amount,
-        }
-
+        # Devolver la información estadística predefinida según el distrito ingresado
+        if pickup_borough == "Manhattan":
+            return {
+                "Viajes Totales": 24235349,
+                "Duración Promedio (Hs)": 0.25,
+                "Media de Viajes por Día": 85940.95,
+                "Media de Viajes por Mes": 1425608.76,
+                "Distancia recorrida promedio (millas)": 3.24,
+                "Total ganado en promedio (USD)": 26.35
+            }
+        elif pickup_borough == "Brooklyn":
+            return {
+                "Viajes Totales": 253965,
+                "Duración Promedio (Hs)": 0.42,
+                "Media de Viajes por Día": 923.51,
+                "Media de Viajes por Mes": 23087.73,
+                "Distancia recorrida promedio (millas)": 21.49,
+                "Total ganado en promedio (USD)": 34.38
+            }
+        elif pickup_borough == "Queens":
+            return {
+                "Viajes Totales": 2741675,
+                "Duración Promedio (Hs)": 0.6,
+                "Media de Viajes por Día": 9756.85,
+                "Media de Viajes por Mes": 171354.69,
+                "Distancia recorrida promedio (millas)": 13.73,
+                "Total ganado en promedio (USD)": 74.95
+            }
+        elif pickup_borough == "Bronx":
+            return {
+                "Viajes Totales": 45728,
+                "Duración Promedio (Hs)": 0.49,
+                "Media de Viajes por Día": 167.5,
+                "Media de Viajes por Mes": 5080.89,
+                "Distancia recorrida promedio (millas)": 26.44,
+                "Total ganado en promedio (USD)": 32.85
+            }
+        elif pickup_borough == "Staten Island":
+            return {
+                "Viajes Totales": 1739,
+                "Duración Promedio (Hs)": 0.69,
+                "Media de Viajes por Día": 6.56,
+                "Media de Viajes por Mes": 193.22,
+                "Distancia recorrida promedio (millas)": 17.73,
+                "Total ganado en promedio (USD)": 61.57
+            }
+        elif pickup_borough == "EWR":
+            return {
+                "Viajes Totales": 697,
+                "Duración Promedio (Hs)": 0.23,
+                "Media de Viajes por Día": 2.99,
+                "Media de Viajes por Mes": 69.7,
+                "Distancia recorrida promedio (millas)": 6.77,
+                "Total ganado en promedio (USD)": 112.38
+            }
+        else:
+            raise HTTPException(status_code=400, detail="Distrito no válido. Por favor, ingrese uno de los distritos especificados.")
+    
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
