@@ -85,14 +85,14 @@ def predict(data: InputData):
             - 4: Queens
             - 5: Staten Island
             - 6: EWR (Newark Airport)
-        - dayofweek: Número que representa el día de la semana. Debe ser un número entero del 1 al 7, donde:
-            - 1: Lunes
-            - 2: Martes
-            - 3: Miércoles
-            - 4: Jueves
-            - 5: Viernes
-            - 6: Sábado
-            - 7: Domingo
+        - dayofweek: Número que representa el día de la semana. Debe ser un número entero del 0 al 6, donde: 
+            - 0: Lunes
+            - 1: Martes
+            - 2: Miércoles
+            - 3: Jueves
+            - 4: Viernes
+            - 5: Sábado
+            - 6: Domingo
         - hour: Hora del día. Debe ser un número entero del 0 al 23, representando las horas en formato de 24 horas.
 
     Returns:
