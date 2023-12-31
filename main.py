@@ -100,7 +100,7 @@ def predict(data: InputData):
     """
     try:
         # Verificar si los datos cumplen con los criterios especificados
-        if not (1 <= data.pBoroughID <= 6 and 1 <= data.dayofweek <= 7 and 0 <= data.hour <= 23):
+        if not (1 <= data.pBoroughID <= 6 and 0 <= data.dayofweek <= 6 and 0 <= data.hour <= 23):
             raise HTTPException(status_code=422, detail="Error, un dato fue ingresado de forma errónea. Por favor verifica que lo ingresado concuerde con los parámetros indicados.")
 
         # Convertir los datos de entrada a un DataFrame
