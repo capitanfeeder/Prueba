@@ -187,57 +187,57 @@ def get_taxi_stats(pickup_borough: str):
         # Devolver la información estadística predefinida según el distrito ingresado
         if pickup_borough == "Manhattan":
             return {
-                "Viajes Totales": 24235349,
-                "Duración Promedio (Hs)": 0.25,
-                "Media de Viajes por Día": 85940.95,
-                "Media de Viajes por Mes": 1425608.76,
-                "Distancia recorrida promedio (millas)": 3.24,
-                "Total ganado en promedio (USD)": 26.35
+                "Viajes Totales": 28184303,
+                "Duración Promedio (Hs)": 0.23,
+                "Media de Viajes por Día": 89473.98,
+                "Media de Viajes por Mes": 1483384.37,
+                "Distancia recorrida promedio (millas)": 3.2,
+                "Total ganado en promedio (USD)": 26.57
             }
         elif pickup_borough == "Brooklyn":
             return {
-                "Viajes Totales": 253965,
-                "Duración Promedio (Hs)": 0.42,
-                "Media de Viajes por Día": 923.51,
-                "Media de Viajes por Mes": 23087.73,
-                "Distancia recorrida promedio (millas)": 21.49,
-                "Total ganado en promedio (USD)": 34.38
+                "Viajes Totales": 324409,
+                "Duración Promedio (Hs)": 0.43,
+                "Media de Viajes por Día": 1053,
+                "Media de Viajes por Mes": 23172,
+                "Distancia recorrida promedio (millas)": 20.93,
+                "Total ganado en promedio (USD)": 35.16
             }
         elif pickup_borough == "Queens":
             return {
-                "Viajes Totales": 2741675,
-                "Duración Promedio (Hs)": 0.6,
-                "Media de Viajes por Día": 9756.85,
-                "Media de Viajes por Mes": 171354.69,
-                "Distancia recorrida promedio (millas)": 13.73,
-                "Total ganado en promedio (USD)": 74.95
+                "Viajes Totales": 3323671,
+                "Duración Promedio (Hs)": 0.59,
+                "Media de Viajes por Día": 10551,
+                "Media de Viajes por Mes": 184648,
+                "Distancia recorrida promedio (millas)": 13.46,
+                "Total ganado en promedio (USD)": 75.1
             }
         elif pickup_borough == "Bronx":
             return {
-                "Viajes Totales": 45728,
-                "Duración Promedio (Hs)": 0.49,
-                "Media de Viajes por Día": 167.5,
-                "Media de Viajes por Mes": 5080.89,
-                "Distancia recorrida promedio (millas)": 26.44,
-                "Total ganado en promedio (USD)": 32.85
+                "Viajes Totales": 67356,
+                "Duración Promedio (Hs)": 0.48,
+                "Media de Viajes por Día": 221,
+                "Media de Viajes por Mes": 6735,
+                "Distancia recorrida promedio (millas)": 22.64,
+                "Total ganado en promedio (USD)": 34.04
             }
         elif pickup_borough == "Staten Island":
             return {
-                "Viajes Totales": 1739,
-                "Duración Promedio (Hs)": 0.69,
-                "Media de Viajes por Día": 6.56,
-                "Media de Viajes por Mes": 193.22,
-                "Distancia recorrida promedio (millas)": 17.73,
-                "Total ganado en promedio (USD)": 61.57
+                "Viajes Totales": 2497,
+                "Duración Promedio (Hs)": 0.65,
+                "Media de Viajes por Día": 8,
+                "Media de Viajes por Mes": 249,
+                "Distancia recorrida promedio (millas)": 13.24,
+                "Total ganado en promedio (USD)": 65.79
             }
         elif pickup_borough == "EWR":
             return {
-                "Viajes Totales": 697,
-                "Duración Promedio (Hs)": 0.23,
-                "Media de Viajes por Día": 2.99,
-                "Media de Viajes por Mes": 69.7,
-                "Distancia recorrida promedio (millas)": 6.77,
-                "Total ganado en promedio (USD)": 112.38
+                "Viajes Totales": 4219,
+                "Duración Promedio (Hs)": 0.08,
+                "Media de Viajes por Día": 13,
+                "Media de Viajes por Mes": 383,
+                "Distancia recorrida promedio (millas)": 2.4,
+                "Total ganado en promedio (USD)": 113.59
             }
         else:
             raise HTTPException(status_code=400, detail="Distrito no válido. Por favor, ingrese uno de los distritos especificados.")
